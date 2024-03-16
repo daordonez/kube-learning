@@ -18,4 +18,4 @@ sudo apt-get update
 #End step 1
 
 #Step 2 - Install docker tools and Doker Runtime
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get --asume-yes install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
