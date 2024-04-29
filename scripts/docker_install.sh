@@ -19,3 +19,7 @@ sudo apt-get update
 
 #Step 2 - Install docker tools and Doker Runtime
 sudo apt-get --assume-yes install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+#Step 3 - Grant docker permissions for su user (avoids sudo)
+
+sudo usermod -aG docker dordonez
