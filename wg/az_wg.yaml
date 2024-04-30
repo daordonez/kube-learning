@@ -9,6 +9,10 @@ properties:
     - name: wireguard
       properties:
         image: lscr.io/linuxserver/wireguard:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 2
         ports:
           - port: 51820
             protocol: UDP
