@@ -1,0 +1,54 @@
+apiVersion: 2021-06-01-preview
+name: tweurwglab
+location: westeurope
+identity:
+  type: string
+  userAssignedIdentities: /subscriptions/dfc1c669-4460-40a1-8d6a-3469f2b10f23/resourcegroups/TST-WEUR-CONTWG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acaid01
+properties:
+  containers:
+    - name: wireguard
+      properties:
+        image: lscr.io/linuxserver/wireguard:latest
+        ports:
+          - port: 51820
+            protocol: UDP
+        environmentVariables:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: "Europe/Madrod"
+          - name: SERVERURL
+            value: "aca.365enespanol.com"
+          - name: SERVERPORT
+            value: "51820" #optional
+          - name: PEERS
+            value: "4" #optional
+          - name: PEERDNS
+            value: "auto" #optional
+          - name: INTERNAL_SUBNET
+            value: "10.13.13.0" #optional
+          - name: ALLOWEDIPS
+            value: "0.0.0.0/0" #optional
+          - name: PERSISTENTKEEPALIVE_PEERS
+            value: "" #optional
+          - name: LOG_CONFS
+            value: "true" #optional
+        volumeMounts:
+          - name: config
+            mountPath: /config
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: UDP
+      port: 51820
+    dnsNameLabel: tweuraca
+  volumes:
+    - name: config
+      azureFile:
+        sharename: config
+        storageAccountName: tweurcontainers
+        storageAccountKey: "@Microsoft.KeyVault(SecretUri=https://tweurkvcontainers.vault.azure.net/secrets/tweursas01/cc1991c2d08c4bb3bcb9645e256dbb80)"
+  osType: Linux
+  restartPolicy: Always
