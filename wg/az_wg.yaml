@@ -3,7 +3,7 @@ name: tweurwglab
 location: westeurope
 identity:
   type: string
-  userAssignedIdentities: /subscriptions/dfc1c669-4460-40a1-8d6a-3469f2b10f23/resourcegroups/TST-WEUR-CONTWG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acaid01
+  userAssignedIdentities: "/subscriptions/dfc1c669-4460-40a1-8d6a-3469f2b10f23/resourcegroups/TST-WEUR-CONTWG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/acaid01"
 properties:
   containers:
     - name: wireguard
